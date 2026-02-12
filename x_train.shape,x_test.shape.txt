@@ -1,0 +1,10 @@
+x_train.shape,x_test.shape
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()    # create an object of class
+
+scaler.fit(x_train)       #  fit on training i/p data
+
+x_train_scaled = scaler.transform(x_train)    # transform model on both traing and testing data
+x_test_scaled = scaler.transform(x_test)
+print(x_train_scaled)
