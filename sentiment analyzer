@@ -1,0 +1,25 @@
+import streamlit as st
+from textblob import TextBlob
+def analyze_sentiment(text):
+blob = TextBlob(text)
+sentiment = blob.sentiment.polarity
+if sentiment > 0:
+return "Positive"
+elif sentiment < 0:
+return "Negative"
+else:
+return "Neutral"
+st.title("Sentiment Analyzer")
+st.markdown("*Enter a movie review:*")
+review = st.text_area("", height=200)
+if st.button("Analyze"):
+result = analyze_sentiment(review)
+st.markdown(f"*Sentiment:* {result}")
+# Moved the following code block inside the if statement
+# This ensures 'result' is defined before being used
+if result == "Positive":
+st.success("The review has a positive sentiment.")
+elif result == "Negative":
+st.error("The Review has a negative sentiment.")
+else:
+st.warning("The review has a neutral sentiment.")
